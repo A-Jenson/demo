@@ -37,13 +37,14 @@ public class ApplicationTests {
 
     @Test
     public void validateService(){
+    	String token = "eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiSmFuZSBEb2UiLCJlbWFpbCI6ImphbmVAZXhhbXBsZS5jb20iLCJzdWIiOiJqYW5lIiwianRpIjoiMDMzYjBkNGEtZDRkMy00NGQwLThhMGQtYTcwZjlmZmZiYzcwIiwiaWF0IjoxNjUxNTk4MTE5LCJleHAiOjE2NTE1OTg0MTl9.fq6IN218RrNgA2--qvyjOZ9nGUIytUJgIhwNCLmhI9o";
         ValidationResponse invalid = ValidationResponse.builder()
-                .answer(97).question("Please sum the numbers 3,6,8").build();
+                .answer(97).question("Please sum the numbers 3,6,8").token(token).build();
 
         Assert.assertThrows(BadRequest.class,()->validationService.validate(invalid));
         log.info("------------checking invalid answer----------------");
         ValidationResponse valid = ValidationResponse.builder()
-                .answer(17).question("Please sum the numbers 3,6,8").build();
+                .answer(17).question("Please sum the numbers 3,6,8").token(token).build();
 
         Assertions.assertThatCode(()->validationService.validate(valid))
                 .doesNotThrowAnyException();
