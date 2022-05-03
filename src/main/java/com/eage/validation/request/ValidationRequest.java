@@ -7,4 +7,5 @@ import lombok.Data;
 @Builder
 public class ValidationRequest {
    String question;
+   String token;
 }

@@ -8,4 +8,5 @@ import lombok.Data;
 public class ValidationResponse {
    public String question;
    public  int answer;
+   public String token;
 }
